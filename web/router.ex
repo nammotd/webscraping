@@ -1,5 +1,5 @@
-defmodule BlogPhoenix.Router do
-  use BlogPhoenix.Web, :router
+defmodule Hello.Router do
+  use Hello.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,17 +13,14 @@ defmodule BlogPhoenix.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", BlogPhoenix do
+  scope "/", Hello do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PostController, :index
-    resources "/posts", PostController do
-      post "/comment", PostController, :add_comment
-    end
+    get "/", PageController, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BlogPhoenix do
+  # scope "/api", Hello do
   #   pipe_through :api
   # end
 end

@@ -5,13 +5,16 @@
 # is restricted to this project.
 use Mix.Config
 
+# General application configuration
+config :hello,
+  ecto_repos: [Hello.Repo]
+
 # Configures the endpoint
-config :blog_phoenix, BlogPhoenix.Endpoint,
+config :hello, Hello.Endpoint,
   url: [host: "localhost"],
-  root: Path.dirname(__DIR__),
-  secret_key_base: "yyURDuAdgQAbPdG4YJUj9X+XihSqc4Wi5hFe7lrKEz8K2DAMyLDpCxTeAjN0F6sX",
-  debug_errors: false,
-  pubsub: [name: BlogPhoenix.PubSub,
+  secret_key_base: "99uEr8h6atgvMeSHXYLPvaadU/rCb745pi9pAMchPE66MrX2HPjoREYaj8cKGrCv",
+  render_errors: [view: Hello.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: Hello.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger

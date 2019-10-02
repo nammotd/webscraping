@@ -1,3 +1,3 @@
-defmodule BlogPhoenix.LayoutView do
-  use BlogPhoenix.Web, :view
+defmodule Hello.LayoutView do
+  use Hello.Web, :view
 end

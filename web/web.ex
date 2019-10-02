@@ -1,12 +1,12 @@
-defmodule BlogPhoenix.Web do
+defmodule Hello.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use BlogPhoenix.Web, :controller
-      use BlogPhoenix.Web, :view
+      use Hello.Web, :controller
+      use Hello.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -18,7 +18,11 @@ defmodule BlogPhoenix.Web do
 
   def model do
     quote do
-      use Ecto.Model
+      use Ecto.Schema
+
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
     end
   end
 
@@ -26,13 +30,12 @@ defmodule BlogPhoenix.Web do
     quote do
       use Phoenix.Controller
 
-      # Alias the data repository and import query/model functions
-      alias BlogPhoenix.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
+      alias Hello.Repo
+      import Ecto
+      import Ecto.Query
 
-      # Import URL helpers from the router
-      import BlogPhoenix.Router.Helpers
+      import Hello.Router.Helpers
+      import Hello.Gettext
     end
   end
 
@@ -43,11 +46,12 @@ defmodule BlogPhoenix.Web do
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_csrf_token: 0, get_flash: 2, view_module: 1]
 
-      # Import URL helpers from the router
-      import BlogPhoenix.Router.Helpers
-
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+
+      import Hello.Router.Helpers
+      import Hello.ErrorHelpers
+      import Hello.Gettext
     end
   end
 
@@ -61,11 +65,10 @@ defmodule BlogPhoenix.Web do
     quote do
       use Phoenix.Channel
 
-      # Alias the data repository and import query/model functions
-      alias BlogPhoenix.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
-
+      alias Hello.Repo
+      import Ecto
+      import Ecto.Query
+      import Hello.Gettext
     end
   end
 

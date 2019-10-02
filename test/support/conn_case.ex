@@ -1,10 +1,10 @@
-defmodule BlogPhoenix.ConnCase do
+defmodule Hello.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
 
   Such tests rely on `Phoenix.ConnTest` and also
-  imports other functionality to make it easier
+  import other functionality to make it easier
   to build and query models.
 
   Finally, if the test case interacts with the database,
@@ -20,24 +20,25 @@ defmodule BlogPhoenix.ConnCase do
       # Import conveniences for testing with connections
       use Phoenix.ConnTest
 
-      # Alias the data repository and import query/model functions
-      alias BlogPhoenix.Repo
-      import Ecto.Model
-      import Ecto.Query, only: [from: 2]
+      alias Hello.Repo
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
 
-      # Import URL helpers from the router
-      import BlogPhoenix.Router.Helpers
+      import Hello.Router.Helpers
 
       # The default endpoint for testing
-      @endpoint BlogPhoenix.Endpoint
+      @endpoint Hello.Endpoint
     end
   end
 
   setup tags do
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Hello.Repo)
+
     unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(BlogPhoenix.Repo, [])
+      Ecto.Adapters.SQL.Sandbox.mode(Hello.Repo, {:shared, self()})
     end
 
-    :ok
+    {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end
