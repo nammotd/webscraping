@@ -1,6 +1,9 @@
 node {
   checkout scm
   switch(env.BRANCH_NAME) {
+    case "master":
+    break
+
     case "develop":
       build job: 'staging', parameters: [[$class: 'StringParameterValue', name: 'BRANCH_NAME', value: "develop"]]
     break
