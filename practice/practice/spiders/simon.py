@@ -2,7 +2,7 @@ import scrapy
 import html2text, datetime, requests, json
 
 class QuotesSpider(scrapy.Spider):
-    name = "test"
+    name = "simon"
     def __init__(self):
         self.default_month_format = {
             "January": 1,
