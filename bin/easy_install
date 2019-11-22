@@ -1,4 +1,4 @@
-#!/Users/hainam/lab/web/bin/python
+#!/Users/hainam/lab/practice_scrapy/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
