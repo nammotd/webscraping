@@ -1,4 +1,4 @@
-import scrapy, logging
+import scrapy, logging, os
 import html2text, datetime, requests, json
 from scrapy.crawler import CrawlerProcess
 
@@ -68,7 +68,8 @@ class QuotesSpider(scrapy.Spider):
         return final_result
 
     def a_newer_date(self, data):
-        saved_date = open('../the_day', 'r').read().strip().split("-")
+        saved_date = open('the_day', 'r').read().strip().split("-")
+        #saved_date = os.environ['SIMON_LATEST_DATE'].split("-")
         '''
             data writen in the 'the_day' file is like '2019-11-16'
         '''
@@ -83,13 +84,14 @@ class QuotesSpider(scrapy.Spider):
                 if the_day < i:
                     the_day = i
             
-            with open("../the_day", "w") as f:
+            with open("the_day", "w") as f:
                 f.write(datetime.datetime.strftime(the_day, "%Y-%m-%d"))
+            #os.environ['SIMON_LATEST_DATE'] = datetime.datetime.strftime(the_day, "%Y-%m-%d")
         else:
             pass
 
     def slack_send(self, data):
-        slack_url = "https://hooks.slack.com/services/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"
+        slack_url = os.environ['SLACK_WEBHOOK_URL']
         headers = {'Content-type': 'application/json'}
         try:
             act = requests.post(
