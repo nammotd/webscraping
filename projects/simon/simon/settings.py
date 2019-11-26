@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for practice project
+# Scrapy settings for simon project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,14 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'practice'
+BOT_NAME = 'simon'
 
-SPIDER_MODULES = ['practice.spiders']
-NEWSPIDER_MODULE = 'practice.spiders'
+SPIDER_MODULES = ['simon.spiders']
+NEWSPIDER_MODULE = 'simon.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'practice (+http://www.yourdomain.com)'
+#USER_AGENT = 'simon (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -47,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'practice.middlewares.PracticeSpiderMiddleware': 543,
+#    'simon.middlewares.SimonSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'practice.middlewares.PracticeDownloaderMiddleware': 543,
+#    'simon.middlewares.SimonDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -65,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'practice.pipelines.PracticePipeline': 300,
+#    'simon.pipelines.SimonPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

@@ -1,8 +1,9 @@
-import scrapy
+import scrapy, logging
 import html2text, datetime, requests, json
 
 class QuotesSpider(scrapy.Spider):
     name = "simon"
+    
     def __init__(self):
         self.default_month_format = {
             "January": 1,
@@ -18,6 +19,8 @@ class QuotesSpider(scrapy.Spider):
             "November": 11,
             "December": 12
         }
+        logging.getLogger('protego').setLevel(logging.WARNING)
+        logging.getLogger('scrapy.statscollectors').setLevel(logging.WARNING)
 
     def start_requests(self):
         urls = [
@@ -85,7 +88,7 @@ class QuotesSpider(scrapy.Spider):
             pass
 
     def slack_send(self, data):
-        slack_url = "https://hooks.slack.com/services/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"
+        slack_url = "https://hooks.slack.com/services/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"
         headers = {'Content-type': 'application/json'}
         try:
             act = requests.post(
