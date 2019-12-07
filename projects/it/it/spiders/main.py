@@ -6,7 +6,7 @@ import slack_utils
 import common_utils
 
 """
-export IT_VIEC_SLACK_WEBHOOK_URL='https://hooks.slack.com/services/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'
+
 """
 
 class LkSpider(scrapy.Spider):
